@@ -18,7 +18,7 @@ int main()
 	//	std::cout << *t << " ";
 	//}
 
-	for (auto t : heap)
+	/*for (auto t : heap)
 	{
 		std::cout << t << " ";
 	}
@@ -39,5 +39,17 @@ int main()
 	for (auto t : heap)
 	{
 		std::cout << t << " ";
+	}*/
+	
+	heap.clear();
+
+	heap = new_heap.remove_elements();
+
+	for (auto t : heap)
+	{
+		std::cout << t << " ";
 	}
+
+	new_heap.fill<std::vector<int>>(heap);
+
 }

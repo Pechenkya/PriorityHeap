@@ -21,6 +21,11 @@ public:
 
 	std::vector <T> return_heap();
 	std::vector <T> return_sorted_heap();
+	std::vector <T> remove_elements();
+	
+	template<typename Container>
+	void fill(Container list);
+
 	T remove_max();
 
 
@@ -70,6 +75,16 @@ void Heap<T>::swim(int k)
 	{
 		exch(k, k / 2);
 		k = k / 2;
+	}
+}
+
+template<typename T>
+template<typename Container>
+void Heap<T>::fill(Container list)
+{
+	for (auto t : list)
+	{
+		this->insert(t);
 	}
 }
 
@@ -145,6 +160,19 @@ std::vector <T> Heap<T>::return_sorted_heap()
 
 	return temp;
 }
+
+template<typename T>
+std::vector <T> Heap<T>::remove_elements()
+{
+	std::vector <T> temp;
+	for (int i = 1; i <= this->size;)
+	{
+		temp.push_back(this->remove_max());
+	}
+
+	return temp;
+}
+
 
 template<typename T>
 T Heap<T>::remove_max()
