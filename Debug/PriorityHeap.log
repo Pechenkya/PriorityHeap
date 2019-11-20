@@ -1,10 +1,7 @@
-﻿  PriorityHeap.cpp
-d:\progs\visualstudioprojects\priorityheap\priorityheap\priorityheap\heap.h(122): warning C4018: <: несоответствие типов со знаком и без знака
-  d:\progs\visualstudioprojects\priorityheap\priorityheap\priorityheap\heap.h(121): note: при компиляции функции-члена "<Нет данных>" класса класс <Нет данных>
-  d:\progs\visualstudioprojects\priorityheap\priorityheap\priorityheap\priorityheap.cpp(7): note: выполняется компиляция ссылки на экземпляр шаблон функции "void Heap<int>::insert(T)"
-          with
-          [
-              T=int
-          ]
-  d:\progs\visualstudioprojects\priorityheap\priorityheap\priorityheap\priorityheap.cpp(6): note: выполняется компиляция ссылки на экземпляр шаблон класс "Heap<int>"
+﻿  Heap.cpp
+  PriorityHeap.cpp
+d:\progs\visualstudioprojects\priorityheap\priorityheap\priorityheap\heap.h(143): warning C4018: <: несоответствие типов со знаком и без знака
+  d:\progs\visualstudioprojects\priorityheap\priorityheap\priorityheap\priorityheap.cpp(103): note: выполняется компиляция ссылки на экземпляр шаблон функции "void Heap<A>::emplace<int,const char(&)[5]>(int &&,const char (&)[5])"
+  d:\progs\visualstudioprojects\priorityheap\priorityheap\priorityheap\priorityheap.cpp(103): note: выполняется компиляция ссылки на экземпляр шаблон функции "void Heap<A>::emplace<int,const char(&)[5]>(int &&,const char (&)[5])"
+  Создание кода...
   PriorityHeap.vcxproj -> D:\Progs\VisualStudioProjects\PriorityHeap\PriorityHeap\Debug\PriorityHeap.exe

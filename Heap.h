@@ -19,6 +19,9 @@ private:
 public:
 	void insert(T elem);
 
+	template<typename... Args>
+	void emplace(Args&&... args);
+
 	std::vector <T> return_heap();
 	std::vector <T> return_sorted_heap();
 	std::vector <T> remove_elements();
@@ -127,6 +130,24 @@ void Heap<T>::insert(T elem)
 	else
 	{
 		heap.push_back(new T(elem));
+		++size;
+		swim(size);
+	}
+
+}
+
+template<typename T>
+template<typename... Args>
+void Heap<T>::emplace(Args&&... args)
+{
+	if (this->size < this->heap.size() - 1)
+	{
+		heap[++size] = new T(std::forward<Args>(args)...);
+		swim(size);
+	}
+	else
+	{
+		heap.push_back(new T(std::forward<Args>(args)...));
 		++size;
 		swim(size);
 	}
