@@ -98,10 +98,22 @@ int main()
 
 	//new_heap.fill<std::vector<int>>(heap);
 
-	Heap<A> new_heap;
+	//Heap<A> new_heap;
 
-	new_heap.emplace(5, "Nick");
-	new_heap.emplace(32, "sdk");
-	new_heap.emplace(12, "asv");
+	//new_heap.emplace(5, "Nick");
+	//new_heap.emplace(32, "sdk");
+	//new_heap.emplace(12, "asv");
+
+
+	Heap<int> new_heap;
+
+	new_heap.insert(5);
+	new_heap.insert(25);
+	new_heap.insert(35);
+	new_heap.insert(25);
+
+	auto itr = new_heap.begin();
+
+	++itr;
 
 }

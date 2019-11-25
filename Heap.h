@@ -3,6 +3,9 @@
 #include <iterator>
 
 template<typename T>
+struct HeapItr;
+
+template<typename T>
 class Heap
 {
 private:
@@ -32,37 +35,70 @@ public:
 	T remove_max();
 
 
-	T** begin();
-	T** end();
-	const T** const_begin();
-	const T** const_end();
+	HeapItr<T> begin();
+	HeapItr<T> end();
+	const HeapItr<T> const_begin();
+	const HeapItr<T> const_end();
 
 	Heap();
 	~Heap();
 };
 
 template<typename T>
-T** Heap<T>::begin()
+struct HeapItr
 {
-	return &heap[1];
+private:
+	T** this_node = nullptr;
+
+public:
+	HeapItr() = default;
+	HeapItr(T* &new_node);
+
+	HeapItr& operator++();
+	T& operator*();
+};
+
+template<typename T>
+HeapItr<T>::HeapItr(T* &new_node)
+{
+	this_node = &new_node;
 }
 
 template<typename T>
-T** Heap<T>::end()
+HeapItr<T>& HeapItr<T>::operator++()
 {
-	return &heap[size];
+	this->this_node = ++this->this_node;
+	return *this;
 }
 
 template<typename T>
-const T** Heap<T>::const_begin()
+T& HeapItr<T>::operator*()
 {
-	return &heap[1];
+	return *(*this_node);
 }
 
 template<typename T>
-const T** Heap<T>::const_end()
+HeapItr<T> Heap<T>::begin()
 {
-	return &heap[size];
+	return HeapItr<T>(this->heap[1]);
+}
+
+template<typename T>
+HeapItr<T> Heap<T>::end()
+{
+	return HeapItr<T>(this->heap[size]);
+}
+
+template<typename T>
+const HeapItr<T> Heap<T>::const_begin()
+{
+	return HeapItr<T>(this->heap[1]);
+}
+
+template<typename T>
+const HeapItr<T> Heap<T>::const_end()
+{
+	HeapItr<T>(this->heap[1]);
 }
 
 template<typename T>
