@@ -34,7 +34,6 @@ public:
 
 	T remove_max();
 
-
 	HeapItr<T> begin();
 	HeapItr<T> end();
 	const HeapItr<T> const_begin();
@@ -47,14 +46,18 @@ public:
 template<typename T>
 struct HeapItr
 {
-private:
-	T** this_node = nullptr;
-
 public:
+	T** this_node = nullptr;
 	HeapItr() = default;
 	HeapItr(T* &new_node);
 
 	HeapItr& operator++();
+	HeapItr& operator++(int);
+	HeapItr& operator--();
+	HeapItr& operator--(int);
+
+	bool operator==(const HeapItr<T>& obj);
+	bool operator!=(const HeapItr<T>& obj);
 	T& operator*();
 };
 
@@ -72,6 +75,39 @@ HeapItr<T>& HeapItr<T>::operator++()
 }
 
 template<typename T>
+HeapItr<T>& HeapItr<T>::operator++(int)
+{
+	this->this_node = ++this->this_node;
+	return *this;
+}
+
+template<typename T>
+HeapItr<T>& HeapItr<T>::operator--()
+{
+	this->this_node = --this->this_node;
+	return *this;
+}
+
+template<typename T>
+HeapItr<T>& HeapItr<T>::operator--(int)
+{
+	this->this_node = --this->this_node;
+	return *this;
+}
+
+template<typename T>
+bool HeapItr<T>::operator==(const HeapItr<T>& obj)
+{
+	return *this->this_node == *obj.this_node;
+}
+
+template<typename T>
+bool HeapItr<T>::operator!=(const HeapItr<T>& obj)
+{
+	return !(*this == obj);
+}
+
+template<typename T>
 T& HeapItr<T>::operator*()
 {
 	return *(*this_node);
@@ -86,7 +122,9 @@ HeapItr<T> Heap<T>::begin()
 template<typename T>
 HeapItr<T> Heap<T>::end()
 {
-	return HeapItr<T>(this->heap[size]);
+	HeapItr<T> temp_itr = HeapItr<T>(this->heap[size]);
+	++temp_itr;
+	return temp_itr;
 }
 
 template<typename T>
@@ -98,7 +136,9 @@ const HeapItr<T> Heap<T>::const_begin()
 template<typename T>
 const HeapItr<T> Heap<T>::const_end()
 {
-	HeapItr<T>(this->heap[1]);
+	HeapItr<T> temp_itr = HeapItr<T>(this->heap[size]);
+	++temp_itr;
+	return temp_itr;
 }
 
 template<typename T>

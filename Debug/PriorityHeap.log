@@ -1,7 +1,7 @@
 ﻿  Heap.cpp
   PriorityHeap.cpp
-d:\progs\visualstudioprojects\priorityheap\priorityheap\priorityheap\heap.h(161): warning C4018: <: несоответствие типов со знаком и без знака
-  d:\progs\visualstudioprojects\priorityheap\priorityheap\priorityheap\heap.h(160): note: при компиляции функции-члена "<Нет данных>" класса класс <Нет данных>
+d:\progs\visualstudioprojects\priorityheap\priorityheap\priorityheap\heap.h(186): warning C4018: <: несоответствие типов со знаком и без знака
+  d:\progs\visualstudioprojects\priorityheap\priorityheap\priorityheap\heap.h(185): note: при компиляции функции-члена "<Нет данных>" класса класс <Нет данных>
   d:\progs\visualstudioprojects\priorityheap\priorityheap\priorityheap\priorityheap.cpp(110): note: выполняется компиляция ссылки на экземпляр шаблон функции "void Heap<int>::insert(T)"
           with
           [

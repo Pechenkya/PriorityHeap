@@ -114,6 +114,9 @@ int main()
 
 	auto itr = new_heap.begin();
 
-	++itr;
+	for (auto t : new_heap)
+	{
+		std::cout << t << " ";
+	}
 
 }
